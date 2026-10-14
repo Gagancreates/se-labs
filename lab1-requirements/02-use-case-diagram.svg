@@ -1,0 +1,127 @@
+<svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <!-- Background -->
+  <rect x="0" y="0" width="1000" height="700" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="500" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a1a">Use-Case Diagram — Dropshipping Inventory &amp; Order Orchestrator</text>
+
+  <!-- System boundary -->
+  <rect x="230" y="55" width="560" height="590" fill="#fafafa" stroke="#333333" stroke-width="2" rx="6"/>
+  <text x="510" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a1a1a">Order Orchestrator System</text>
+
+  <!-- ===================== ACTORS ===================== -->
+  <!-- Storefront Platform (top-left, primary/secondary source) -->
+  <g stroke="#1a1a1a" stroke-width="2" fill="none">
+    <circle cx="90" cy="110" r="14" fill="#ffffff"/>
+    <line x1="90" y1="124" x2="90" y2="170"/>
+    <line x1="60" y1="140" x2="120" y2="140"/>
+    <line x1="90" y1="170" x2="65" y2="205"/>
+    <line x1="90" y1="170" x2="115" y2="205"/>
+  </g>
+  <text x="90" y="222" text-anchor="middle" font-size="12" fill="#1a1a1a">Storefront</text>
+  <text x="90" y="236" text-anchor="middle" font-size="12" fill="#1a1a1a">Platform</text>
+
+  <!-- E-Store Owner (bottom-left) -->
+  <g stroke="#1a1a1a" stroke-width="2" fill="none">
+    <circle cx="90" cy="440" r="14" fill="#ffffff"/>
+    <line x1="90" y1="454" x2="90" y2="500"/>
+    <line x1="60" y1="470" x2="120" y2="470"/>
+    <line x1="90" y1="500" x2="65" y2="535"/>
+    <line x1="90" y1="500" x2="115" y2="535"/>
+  </g>
+  <text x="90" y="552" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">E-Store Owner</text>
+
+  <!-- Supplier Partner (right side) -->
+  <g stroke="#1a1a1a" stroke-width="2" fill="none">
+    <circle cx="910" cy="300" r="14" fill="#ffffff"/>
+    <line x1="910" y1="314" x2="910" y2="360"/>
+    <line x1="880" y1="330" x2="940" y2="330"/>
+    <line x1="910" y1="360" x2="885" y2="395"/>
+    <line x1="910" y1="360" x2="935" y2="395"/>
+  </g>
+  <text x="910" y="412" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a1a1a">Supplier Partner</text>
+
+  <!-- ===================== USE CASES (ellipses) ===================== -->
+  <!-- 1 Receive Order Webhook -->
+  <ellipse cx="345" cy="115" rx="95" ry="34" fill="#eef4ff" stroke="#2c5aa0" stroke-width="1.5"/>
+  <text x="345" y="111" text-anchor="middle" font-size="12">Receive Order</text>
+  <text x="345" y="126" text-anchor="middle" font-size="12">Webhook</text>
+
+  <!-- 2 Split Multi-Vendor Order -->
+  <ellipse cx="530" cy="115" rx="105" ry="34" fill="#eef4ff" stroke="#2c5aa0" stroke-width="1.5"/>
+  <text x="530" y="111" text-anchor="middle" font-size="12">Split Multi-Vendor</text>
+  <text x="530" y="126" text-anchor="middle" font-size="12">Order</text>
+
+  <!-- 3 Verify Supplier Inventory -->
+  <ellipse cx="530" cy="230" rx="105" ry="34" fill="#eef4ff" stroke="#2c5aa0" stroke-width="1.5"/>
+  <text x="530" y="226" text-anchor="middle" font-size="12">Verify Supplier</text>
+  <text x="530" y="241" text-anchor="middle" font-size="12">Inventory</text>
+
+  <!-- 4 Dispatch Purchase Order -->
+  <ellipse cx="530" cy="345" rx="105" ry="34" fill="#eef4ff" stroke="#2c5aa0" stroke-width="1.5"/>
+  <text x="530" y="341" text-anchor="middle" font-size="12">Dispatch Purchase</text>
+  <text x="530" y="356" text-anchor="middle" font-size="12">Order</text>
+
+  <!-- 5 Handle Backorder (extension) -->
+  <ellipse cx="705" cy="290" rx="95" ry="34" fill="#fff2e6" stroke="#b5651d" stroke-width="1.5"/>
+  <text x="705" y="286" text-anchor="middle" font-size="12">Handle Backorder</text>
+  <text x="705" y="301" text-anchor="middle" font-size="10" font-style="italic">(ext. point: stock</text>
+  <text x="705" y="313" text-anchor="middle" font-size="10" font-style="italic">insufficient)</text>
+
+  <!-- 6 Track Shipment -->
+  <ellipse cx="530" cy="460" rx="95" ry="34" fill="#eef4ff" stroke="#2c5aa0" stroke-width="1.5"/>
+  <text x="530" y="465" text-anchor="middle" font-size="12">Track Shipment</text>
+
+  <!-- 7 Notify E-Store Owner -->
+  <ellipse cx="345" cy="460" rx="95" ry="34" fill="#eef4ff" stroke="#2c5aa0" stroke-width="1.5"/>
+  <text x="345" y="456" text-anchor="middle" font-size="12">Notify E-Store</text>
+  <text x="345" y="471" text-anchor="middle" font-size="12">Owner</text>
+
+  <!-- 8 View Order Dashboard -->
+  <ellipse cx="345" cy="565" rx="95" ry="34" fill="#eef4ff" stroke="#2c5aa0" stroke-width="1.5"/>
+  <text x="345" y="561" text-anchor="middle" font-size="12">View Order</text>
+  <text x="345" y="576" text-anchor="middle" font-size="12">Dashboard</text>
+
+  <!-- ===================== ACTOR ASSOCIATIONS (solid lines) ===================== -->
+  <line x1="130" y1="130" x2="255" y2="118" stroke="#1a1a1a" stroke-width="1.3"/>
+  <line x1="130" y1="440" x2="255" y2="560" stroke="#1a1a1a" stroke-width="1.3"/>
+  <line x1="130" y1="420" x2="255" y2="460" stroke="#1a1a1a" stroke-width="1.3"/>
+  <line x1="870" y1="290" x2="628" y2="235" stroke="#1a1a1a" stroke-width="1.3"/>
+  <line x1="870" y1="310" x2="628" y2="345" stroke="#1a1a1a" stroke-width="1.3"/>
+  <line x1="870" y1="330" x2="628" y2="460" stroke="#1a1a1a" stroke-width="1.3"/>
+
+  <!-- ===================== USE-CASE RELATIONSHIPS ===================== -->
+  <!-- Sequential flow (plain thin arrows) -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+    </marker>
+    <marker id="arrowOpen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#555555" stroke-width="1"/>
+    </marker>
+  </defs>
+
+  <line x1="440" y1="115" x2="425" y2="115" stroke="#1a1a1a" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="530" y1="149" x2="530" y2="196" stroke="#1a1a1a" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="530" y1="264" x2="530" y2="311" stroke="#1a1a1a" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="530" y1="379" x2="530" y2="426" stroke="#1a1a1a" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="435" y1="460" x2="440" y2="460" stroke="#1a1a1a" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- <<include>>: Dispatch Purchase Order includes Verify Supplier Inventory -->
+  <line x1="530" y1="311" x2="530" y2="264" stroke="#555555" stroke-width="1.3" stroke-dasharray="6,4" marker-end="url(#arrowOpen)"/>
+  <text x="545" y="290" font-size="11" font-style="italic" fill="#333333">&#171;include&#187;</text>
+
+  <!-- <<extend>>: Handle Backorder extends Verify Supplier Inventory -->
+  <line x1="640" y1="280" x2="628" y2="245" stroke="#b5651d" stroke-width="1.3" stroke-dasharray="6,4" marker-end="url(#arrowOpen)"/>
+  <text x="640" y="255" font-size="11" font-style="italic" fill="#b5651d">&#171;extend&#187;</text>
+
+  <!-- Legend -->
+  <rect x="60" y="600" width="330" height="80" fill="#ffffff" stroke="#999999" stroke-width="1"/>
+  <text x="70" y="618" font-size="11" font-weight="bold">Legend</text>
+  <line x1="70" y1="632" x2="100" y2="632" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="106" y="636" font-size="10">Association / sequence</text>
+  <line x1="70" y1="648" x2="100" y2="648" stroke="#555555" stroke-width="1.3" stroke-dasharray="6,4"/>
+  <text x="106" y="652" font-size="10">&#171;include&#187; (always invoked)</text>
+  <line x1="70" y1="664" x2="100" y2="664" stroke="#b5651d" stroke-width="1.3" stroke-dasharray="6,4"/>
+  <text x="106" y="668" font-size="10">&#171;extend&#187; (conditional)</text>
+</svg>

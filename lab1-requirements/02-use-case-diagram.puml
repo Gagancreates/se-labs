@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+actor "Storefront Platform" as Storefront
+actor "E-Store Owner" as Owner
+actor "Supplier Partner" as Supplier
+
+rectangle "Order Orchestrator System" {
+  usecase "Receive Order Webhook" as UC1
+  usecase "Split Multi-Vendor Order" as UC2
+  usecase "Verify Supplier Inventory" as UC3
+  usecase "Dispatch Purchase Order" as UC4
+  usecase "Handle Backorder" as UC5
+  usecase "Track Shipment" as UC6
+  usecase "Notify E-Store Owner" as UC7
+  usecase "View Order Dashboard" as UC8
+}
+
+Storefront --> UC1
+Owner --> UC8
+Owner --> UC7
+Supplier --> UC3
+Supplier --> UC4
+Supplier --> UC6
+
+UC1 --> UC2
+UC2 --> UC3
+UC3 --> UC4
+UC4 --> UC7
+
+UC4 .down.> UC3 : <<include>>
+UC5 .up.> UC3 : <<extend>>
+@enduml

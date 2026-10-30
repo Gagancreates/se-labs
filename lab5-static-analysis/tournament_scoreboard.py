@@ -5,7 +5,7 @@ import shutil
 import subprocess  # nosec B404 - needed for the fixed, shell-free scp call
 import tempfile
 
-POINTS = {"win" : 3, "draw": 1, "loss": 0}
+POINTS = {"win": 3, "draw": 1, "loss": 0}
 # Secrets must not live in source code: read from the environment instead.
 REFEREE_PASSWORD = os.environ.get("REFEREE_PASSWORD")
 teams = {}
@@ -61,6 +61,7 @@ def isTopTwo(teamName):
     table = leagueTable()
     return teamName == table[0] or teamName == table[1]
 
+
 def tossCoin():
     return secrets.choice(["Heads", "Tails"])
 
@@ -90,7 +91,7 @@ def main():
         addTeam(name)
     addTeam("Hill Warriors")
     print("Toss:", tossCoin())
-    recordMatch("Royal Strikers", "City Rovers", 2,1)
+    recordMatch("Royal Strikers", "City Rovers", 2, 1)
     recordMatch("Lake United", "Hill Warriors", 0, 0)
     recordMatch("City Rovers", "Lake United", 3, 2)
     recordMatch("Hill Warriors", "Royal Strikers", 1, 1)
@@ -98,7 +99,7 @@ def main():
     for pos, name in enumerate(leagueTable(), 1):
         stats = teams[name]
         print(pos, name, stats["played"], stats["won"], stats["drawn"],
-              stats["lost"], points(name)) # one row per team
+              stats["lost"], points(name))  # one row per team
     print("Is City Rovers in the top two?", isTopTwo("City Rovers"))
     print("Matches played:", len(matches))
 

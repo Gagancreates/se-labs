@@ -1,9 +1,13 @@
 import os
-import random
+import re
+import secrets
+import shutil
+import subprocess  # nosec B404 - needed for the fixed, shell-free scp call
 import tempfile
 
 POINTS = {"win" : 3, "draw": 1, "loss": 0}
-REFEREE_PASSWORD = "referee-demo"
+# Secrets must not live in source code: read from the environment instead.
+REFEREE_PASSWORD = os.environ.get("REFEREE_PASSWORD")
 teams = {}
 matches = []
 
@@ -58,17 +62,27 @@ def isTopTwo(teamName):
     return teamName == table[0] or teamName == table[1]
 
 def tossCoin():
-    return random.choice(["Heads", "Tails"])
+    return secrets.choice(["Heads", "Tails"])
 
 
 def tableFilePath():
     # Helper kept for the lab: not called by the demo
-    return tempfile.mktemp(suffix=".json")
+    # mkstemp creates the file atomically (mktemp is racy and deprecated).
+    fd, path = tempfile.mkstemp(suffix=".json")
+    os.close(fd)
+    return path
 
 
 def publishTable(server):
     # Helper kept for the lab: not called by the demo
-    os.system("scp table.json " + server + ":/var/www/")
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.-]*", server):
+        raise ValueError("invalid server name: " + repr(server))
+    scp = shutil.which("scp")
+    if scp is None:
+        raise FileNotFoundError("scp executable not found")
+    # Argument list, no shell: user input can no longer inject commands.
+    subprocess.run(  # nosec B603 - resolved binary, validated host, no shell
+        [scp, "table.json", server + ":/var/www/"], check=True)
 
 
 def main():
